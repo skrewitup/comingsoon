@@ -28,6 +28,7 @@
       border: none;
       padding: 5px;
       margin-bottom: 10px;
+      width: 100%;
     }
 
     button {
@@ -36,15 +37,31 @@
       border: none;
       padding: 10px 20px;
       cursor: pointer;
+      width: 100%;
     }
 
     button:hover {
       background-color: #777;
     }
 
-    #vout, #v1 {
+    #vout,
+    #v1 {
       margin-top: 20px;
       color: #fff;
+    }
+
+    /* Responsive styles */
+    @media screen and (min-width: 480px) {
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      input,
+      button {
+        width: 100%;
+        max-width: 200px;
+      }
     }
   </style>
   <script>
@@ -52,29 +69,31 @@
       var vin = parseFloat(document.getElementById("vin").value);
       var r1 = parseFloat(document.getElementById("r1").value);
       var r2 = parseFloat(document.getElementById("r2").value);
-      
+
       var vout = (vin * r2) / (r1 + r2);
       var v1 = vin - vout;
-      
+
       document.getElementById("vout").innerHTML = "Vout: " + vout.toFixed(2) + " V";
       document.getElementById("v1").innerHTML = "V1: " + v1.toFixed(2) + " V";
     }
   </script>
 </head>
 <body>
-  <h1>Voltage Divider Calculator</h1>
-  <label for="vin">Vin:</label>
-  <input type="number" id="vin" placeholder="Input voltage (Vin)">
-  <br><br>
-  <label for="r1">R1:</label>
-  <input type="number" id="r1" placeholder="Resistance R1">
-  <br><br>
-  <label for="r2">R2:</label>
-  <input type="number" id="r2" placeholder="Resistance R2">
-  <br><br>
-  <button onclick="calculate()">Calculate</button>
-  <br><br>
-  <div id="vout"></div>
-  <div id="v1"></div>
+  <div class="container">
+    <h1>Voltage Divider Calculator</h1>
+    <label for="vin">Vin:</label>
+    <input type="number" id="vin" placeholder="Input voltage (Vin)">
+    <br><br>
+    <label for="r1">R1:</label>
+    <input type="number" id="r1" placeholder="Resistance R1">
+    <br><br>
+    <label for="r2">R2:</label>
+    <input type="number" id="r2" placeholder="Resistance R2">
+    <br><br>
+    <button onclick="calculate()">Calculate</button>
+    <br><br>
+    <div id="vout"></div>
+    <div id="v1"></div>
+  </div>
 </body>
 </html>
